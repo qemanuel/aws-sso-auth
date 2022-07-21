@@ -18,13 +18,15 @@ config = configparser.ConfigParser()
 home = getAWSHome()
 credentialsFile = home + 'credentials'
 config.read(credentialsFile)
+## Vacio la carpeta de credenciales
+for f in os.listdir(home + "\\cli\\cache" ):
+    os.remove(os.path.join(home + "\\cli\\cache" , f))
+
 for profileName in config.sections():
     profile = config[profileName]
     if profileName != 'sso':
         os.system('aws sts get-caller-identity --profile ' + profileName)
         credentials = json.parseCredentialsFile(home)
-        print("Profile: ")
-        print(profile)
         profile['aws_access_key_id']=credentials[0]
         profile['aws_secret_access_key']=credentials[1]
         profile['aws_session_token']=credentials[2]

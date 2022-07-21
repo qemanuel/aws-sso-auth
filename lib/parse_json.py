@@ -16,7 +16,6 @@ def parseCredentialsFile(awsDir):
 
 
 def getCredentials(fileName):
-    print("\n\nParseando file: ", fileName)
     with open(fileName, "r") as f:
         data = json.load(f)
         credentials = data['Credentials']
