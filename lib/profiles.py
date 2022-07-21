@@ -57,16 +57,16 @@ def configProfiles(home, awsDir, kubeDir, sso_properties):
             os.system('aws sts get-caller-identity --profile ' + awsProfile)
 
             print("Cargando credenciales al perfil\n")
-            credentials = json.parseFile(home)
+            credentials = json.parseCredentialsFile(awsDir)
 
             print("Credenciales: \n")
             print( credentials)
 
-            cmd="echo " + credentials[0] + " >> " + awsDir + "credentials"
+            cmd="echo aws_access_key_id=" + credentials[0] + " >> " + awsDir + "credentials"
             os.system(cmd)
-            cmd="echo " + credentials[1] + " >> " + awsDir + "credentials"
+            cmd="echo aws_secret_access_key=" + credentials[1] + " >> " + awsDir + "credentials"
             os.system(cmd)
-            cmd="echo " + credentials[2] + " >> " + awsDir + "credentials"
+            cmd="echo aws_session_token=" + credentials[2] + " >> " + awsDir + "credentials"
             os.system(cmd)
 
     print(" Perfiles listos ...\n\n")
