@@ -1,1 +1,1 @@
-# aws-sso-auth
+# AWS CLI profiles Wizard
