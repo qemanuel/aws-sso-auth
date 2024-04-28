@@ -14,7 +14,7 @@ def main():
 
     for key in startUrl,ssoRoleName,ssoRegion,defaultRegion:
         if(key == None):
-            raise Exception(f'Environment Variable {key} is missing. Please, verify your .env file')
+            raise Exception(f'There are missing environment variables. Please, verify your .env file')
 
     ssoConfig = SSOConfig(startUrl, ssoRoleName, ssoRegion, defaultRegion, defaultOutput)
     if fileFormat == "config" :
